@@ -180,12 +180,18 @@ android {
     }
 }
 
+// repositories {
+//     maven { url 'https://jitpack.io' }
+// }
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+//added
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
