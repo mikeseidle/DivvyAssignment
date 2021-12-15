@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import {
   View,
   Text,
@@ -10,10 +11,45 @@ import {
 
 import RevChart from './RevChartView';
 
-const DetailsHeader = ({title}) => {
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+import {useSelector, useDispatch} from 'react-redux';
+import {updateBusiness} from './store/actions/businesses';
+
+const DetailsHeader = ({title, item}) => {
+  const business = useSelector((state) => state.business);
+  const dispatch = useDispatch();
+  const [color, setColor] = useState(business.liked_businesses.includes(item)? 'yellow': 'white');
+  console.log('liked: ', business.liked_businesses);
   return (
     <View style={styles.detailsHeaderContainer}>
-      <Text style={styles.detailsHeaderText}>{title}</Text>
+      <View style={{flex: 6, justifyContent: 'center', marginLeft: 10}}>
+        <Text style={styles.detailsHeaderText}>{title}</Text>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}></View>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <TouchableOpacity
+          onPress={() => {
+            if (business.liked_businesses.includes(item)) {
+              console.log('already liked', item.id);
+              const filterdData = business.liked_businesses.filter(d => d !== item);
+              console.log('Removed Item: ',filterdData)
+              dispatch(updateBusiness(filterdData));
+              setColor('white');
+            } else {
+              console.log('adding liked company...', item)
+              dispatch(updateBusiness([...business.liked_businesses, item]));
+              setColor('yellow')
+            }
+          }}>
+          <FontAwesome name="star" size={25} color={color} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -34,10 +70,7 @@ const DetailsChart = ({getData}) => {
   return (
     <View style={styles.detailsChartContainer}>
       <Text style={styles.detailsChartText}>Renvenue (6 Months)</Text>
-      <RevChart
-        style={styles.revChart}
-        data={getData}
-      />
+      <RevChart style={styles.revChart} data={getData} />
     </View>
   );
 };
@@ -60,15 +93,16 @@ export default class BusinessDetail extends React.Component {
       })
       .reverse();
   }
-  
 
   render() {
     return (
       <ScrollView>
-        <DetailsHeader title={this.state.item.name} />
+        <DetailsHeader title={this.state.item.name} item={this.state.item} />
         <DetailsBody location={this.state.item.location} />
-        {/* {Platform.OS === 'android'? <DetailsChart getData={this._getChartData()} /> : null } */}
-        <DetailsChart getData={this._getChartData()} />
+        {Platform.OS === 'android' ? (
+          <DetailsChart getData={this._getChartData()} />
+        ) : null}
+        {/* <DetailsChart getData={this._getChartData()} /> */}
       </ScrollView>
     );
   }
@@ -90,6 +124,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
     opacity: 0.9,
     paddingLeft: 20,
+    flexDirection: 'row',
   },
   detailsHeaderText: {
     fontSize: 32,

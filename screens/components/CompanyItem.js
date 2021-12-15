@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 export default function CompanyItem({item, nav}) {
   return (
@@ -8,13 +9,17 @@ export default function CompanyItem({item, nav}) {
         nav.navigate('Business Profile', {item: item, name: item.name});
       }}
       style={styles.buttonContainer}>
-      <View style={styles.iconLeftContainer}></View>
+      <View style={styles.iconLeftContainer}>
+      <FontAwesome name="building" size={20} color="#000000" />
+      </View>
       <View style={styles.textMiddleContainer}>
         <Text style={styles.buttonTitle}>
           {item.name}, {item.location.city}
         </Text>
       </View>
-      <View style={styles.iconRightContainer}></View>
+      <View style={styles.iconRightContainer}>
+      <FontAwesome name="chevron-right" size={20} color="#000000" />
+      </View>
     </TouchableOpacity>
   );
 }
@@ -35,6 +40,8 @@ const styles = StyleSheet.create({
   iconLeftContainer: {
     flex: 1,
     borderWidth: 0,
+    justifyContent:'center',
+    alignItems:'center'
   },
   textMiddleContainer: {
     flex: 6,
@@ -44,6 +51,8 @@ const styles = StyleSheet.create({
   iconRightContainer: {
     flex: 1,
     borderWidth: 0,
+    justifyContent:'center',
+    alignItems:'center'
   },
   buttonTitle: {
     color: 'black',

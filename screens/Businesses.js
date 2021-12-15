@@ -4,6 +4,8 @@ import CompanyItem from './components/CompanyItem';
 
 import businesses from '../data.json';
 
+
+
 //import {Ionicons} from '@expo/vector-icons';
 
 export default class Businesses extends React.Component {
@@ -16,6 +18,7 @@ export default class Businesses extends React.Component {
   }
 
   render() {
+    
     return (
       <View style={styles.pageContainer}>
         {/* <View style={{flex: 1, borderWidth: 1}}>

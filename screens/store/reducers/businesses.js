@@ -4,7 +4,7 @@ const businessState = {
     liked_businesses: []
 }
 
-export const businessReducer = (state = userState,action) => {
+export const businessReducer = (state = businessState,action) => {
     switch(action.type){
         case UPDATE_BUSINESSES: 
            return {

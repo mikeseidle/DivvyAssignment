@@ -17,17 +17,17 @@ import {Provider, useDispatch} from 'react-redux';
 import {createStore, combineReducers} from 'redux';
 import businessReducer from './screens/store/reducers/businesses';
 
-// const rootReducer = combineReducers({
-//   business: businessReducer,
-// });
+const rootReducer = combineReducers({
+  business: businessReducer,
+});
 
-//const store = createStore(rootReducer);
+const store = createStore(rootReducer);
 
 const MainNavigator = createStackNavigator();
 
 const App = () => {
   return (
-    
+    <Provider store={store}>
       <NavigationContainer>
         <MainNavigator.Navigator>
           <MainNavigator.Screen name="Companies" component={Businesses} />
@@ -37,6 +37,7 @@ const App = () => {
           />
         </MainNavigator.Navigator>
       </NavigationContainer>
+      </Provider>
 
   );
 };
