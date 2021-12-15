@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import {NativeModules} from 'react-native'
+import {requireNativeComponent} from 'react-native'
 
-const RevChart = requireNativeComponent('RevChart');
+const RevChart = requireNativeComponent('CalendarModule');
 
 export default class RevChartView extends Component {
     render(){
