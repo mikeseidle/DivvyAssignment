@@ -1,7 +1,7 @@
 import { UPDATE_BUSINESSES } from "../actions/businesses";
 
 const businessState = {
-    liked_businesses = []
+    liked_businesses: []
 }
 
 export const businessReducer = (state = userState,action) => {

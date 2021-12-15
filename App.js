@@ -12,17 +12,32 @@ import {createStackNavigator} from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import Businesses from './screens/Businesses';
 import BusinessDetail from './screens/BusinessDetail';
+//redux
+import {Provider, useDispatch} from 'react-redux';
+import {createStore, combineReducers} from 'redux';
+import businessReducer from './screens/store/reducers/businesses';
+
+// const rootReducer = combineReducers({
+//   business: businessReducer,
+// });
+
+//const store = createStore(rootReducer);
 
 const MainNavigator = createStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <MainNavigator.Navigator>
-        <MainNavigator.Screen name="Companies" component={Businesses} />
-        <MainNavigator.Screen name="Business Profile" component={BusinessDetail} />
-      </MainNavigator.Navigator>
-    </NavigationContainer>
+    
+      <NavigationContainer>
+        <MainNavigator.Navigator>
+          <MainNavigator.Screen name="Companies" component={Businesses} />
+          <MainNavigator.Screen
+            name="Business Profile"
+            component={BusinessDetail}
+          />
+        </MainNavigator.Navigator>
+      </NavigationContainer>
+
   );
 };
 

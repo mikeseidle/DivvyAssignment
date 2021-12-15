@@ -2,10 +2,11 @@ import * as React from 'react';
 import {FlatList, Text, View, TouchableOpacity, StyleSheet} from 'react-native';
 import CompanyItem from './components/CompanyItem';
 
-import businesses from '../data.json'
+import businesses from '../data.json';
+
+//import {Ionicons} from '@expo/vector-icons';
 
 export default class Businesses extends React.Component {
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -14,14 +15,13 @@ export default class Businesses extends React.Component {
     };
   }
 
-
   render() {
     return (
       <View style={styles.pageContainer}>
-        <View style={{flex: 1, borderWidth: 1}}>
-
-        </View>
-        <View style={{flex: 11, borderWidth: 1, borderColor: 'green'}}>
+        {/* <View style={{flex: 1, borderWidth: 1}}>
+         <Ionicons name="md-checkmark-circle" size={32} color="green"/>
+        </View> */}
+        <View style={styles.pageMainBody}>
           <FlatList
             data={this.state.data}
             renderItem={(item) => (
@@ -36,8 +36,13 @@ export default class Businesses extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  pageContainer:{
+  pageContainer: {
     flex: 1,
-    backgroundColor: '#FFFFFF'
-  }
+    backgroundColor: '#FFFFFF',
+  },
+  pageMainBody: {
+    flex: 11,
+    // borderWidth: 0,
+    // borderColor: 'green',
+  },
 });
