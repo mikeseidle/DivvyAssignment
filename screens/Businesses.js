@@ -5,9 +5,6 @@ import CompanyItem from './components/CompanyItem';
 import businesses from '../data.json';
 
 
-
-//import {Ionicons} from '@expo/vector-icons';
-
 export default class Businesses extends React.Component {
   constructor(props) {
     super(props);
@@ -21,9 +18,7 @@ export default class Businesses extends React.Component {
     
     return (
       <View style={styles.pageContainer}>
-        {/* <View style={{flex: 1, borderWidth: 1}}>
-         <Ionicons name="md-checkmark-circle" size={32} color="green"/>
-        </View> */}
+       
         <View style={styles.pageMainBody}>
           <FlatList
             data={this.state.data}

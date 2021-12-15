@@ -12,6 +12,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import Businesses from './screens/Businesses';
 import BusinessDetail from './screens/BusinessDetail';
+
 //redux
 import {Provider, useDispatch} from 'react-redux';
 import {createStore, combineReducers} from 'redux';
@@ -30,6 +31,7 @@ const App = () => {
     <Provider store={store}>
       <NavigationContainer>
         <MainNavigator.Navigator>
+        
           <MainNavigator.Screen name="Companies" component={Businesses} />
           <MainNavigator.Screen
             name="Business Profile"

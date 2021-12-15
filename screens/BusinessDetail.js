@@ -102,7 +102,6 @@ export default class BusinessDetail extends React.Component {
         {Platform.OS === 'android' ? (
           <DetailsChart getData={this._getChartData()} />
         ) : null}
-        {/* <DetailsChart getData={this._getChartData()} /> */}
       </ScrollView>
     );
   }
